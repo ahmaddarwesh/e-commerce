@@ -1,23 +1,23 @@
+import 'package:e_commerce/app/modules/login/repositories/products_repo.dart';
+import 'package:e_commerce/app/modules/products_list/data/product_model.dart';
+import 'package:e_commerce/app/modules/products_list/data/products_input.dart';
 import 'package:get/get.dart';
 
-class ProductsListController extends GetxController {
-  //TODO: Implement ProductsListController
-
-  final count = 0.obs;
+class ProductsListController extends GetxController
+    with StateMixin<List<Product>> {
   @override
   void onInit() {
+    getData();
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  Future getData() async {
+    RxStatus.loading();
+    var data = await ProductsRepo.getAllProducts(ProductsInput());
+    if (data.isNotEmpty) {
+      change(data, status: RxStatus.success());
+    } else {
+      change([], status: RxStatus.empty());
+    }
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

@@ -1,16 +1,16 @@
+import 'package:e_commerce/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
-
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
   }
 
   @override
-  void onReady() {
+  void onReady() async {
+    await 1.seconds.delay();
+    Get.toNamed(Routes.PRODUCTS_LIST);
     super.onReady();
   }
 
@@ -18,6 +18,4 @@ class HomeController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

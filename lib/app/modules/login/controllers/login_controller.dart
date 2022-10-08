@@ -1,3 +1,4 @@
+import 'package:e_commerce/app/core/local/sessions_config.dart';
 import 'package:e_commerce/app/modules/login/data/login_input_model.dart';
 import 'package:e_commerce/app/modules/login/data/login_output_model.dart';
 import 'package:e_commerce/app/modules/login/services/login_service.dart';
@@ -41,6 +42,10 @@ class LoginController extends GetxController {
       inputModel,
       onSuccess: (LoginOutputModel outputModel) {
         RxStatus.success();
+        Store.write(SKeys.user, outputModel.user);
+        Store.write(SKeys.token, outputModel.token);
+        Store.write(SKeys.isAuth, true);
+
         Get.offAllNamed(Routes.HOME);
       },
       onError: (e) {

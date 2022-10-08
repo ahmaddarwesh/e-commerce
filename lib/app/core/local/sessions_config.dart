@@ -27,7 +27,7 @@ class SKeys {
   SKeys._();
 
   static const user = 'USER';
-  static const session = 'SESSION';
+  static const token = 'SESSION';
   static const myInfo = 'MY_INFO';
   static const isAuth = 'IS_AUTH';
 }
