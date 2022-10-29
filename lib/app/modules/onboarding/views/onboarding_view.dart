@@ -1,12 +1,13 @@
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:e_commerce/app/modules/onboarding/data/on_bording_model.dart';
 import 'package:e_commerce/app/ui/themes/app_colors.dart';
 import 'package:e_commerce/app/ui/widgets/custom_button.dart';
 import 'package:e_commerce/app/ui/widgets/custom_text.dart';
-import 'package:e_commerce/app/utilities/hex_color_helper.dart';
 import 'package:e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../utilities/hex_color_helper.dart';
 import '../controllers/onboarding_controller.dart';
 
 class OnboardingView extends GetView<OnboardingController> {
@@ -23,9 +24,8 @@ class OnboardingView extends GetView<OnboardingController> {
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Column(
               children: [
-                Expanded(flex: 17, child: _imageView),
-                Expanded(flex: 14, child: _buildTexts),
-                Expanded(flex: 5, child: _buildButtons)
+                Expanded(flex: 31, child: _pageView),
+                Expanded(flex: 7, child: _buildButtons)
               ],
             ),
           ),
@@ -34,12 +34,55 @@ class OnboardingView extends GetView<OnboardingController> {
     );
   }
 
+  Widget get _pageView {
+    return PageView.builder(
+      itemCount: controller.onBoardingList.length,
+      onPageChanged: (index) {
+        controller.currentItem(index);
+      },
+      controller: controller.pageController,
+      physics: const BouncingScrollPhysics(),
+      itemBuilder: (BuildContext context, int index) {
+        var item = controller.onBoardingList[index];
+        return Column(
+          children: [
+            Expanded(flex: 17, child: imageView(item)),
+            Expanded(flex: 14, child: buildTexts(item)),
+          ],
+        );
+      },
+    );
+  }
+
   Widget get _buildButtons => Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Obx(
+              () {
+                double current = double.parse(
+                  controller.currentItem.value.toString(),
+                );
+                return DotsIndicator(
+                  dotsCount: 3,
+                  position: current,
+                  decorator: DotsDecorator(
+                    spacing: const EdgeInsets.symmetric(horizontal: 5),
+                    color: HexColor("#999999"),
+                    activeColor: HexColor("#A49966"),
+                    size: const Size.square(10),
+                    activeSize: const Size.square(10),
+                  ),
+                );
+              },
+            ),
+          ),
           CButton(
             text: "Next",
             width: Get.width,
-            onTap: () {},
+            onTap: () {
+              controller.onNext();
+            },
           ),
           CButton(
             text: "Skip",
@@ -50,43 +93,31 @@ class OnboardingView extends GetView<OnboardingController> {
         ],
       );
 
-  Column get _buildTexts {
+  Column buildTexts(OnBoardingModel model) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const CText(
-          text: "Tailor Made Thobes",
+        CText(
+          text: model.title,
           color: Colors.white,
           fontWeight: FontWeight.w900,
           fontSize: 18,
         ),
         SizedBox(
           width: Get.width * .65,
-          child: const CText(
-            text: "Create your custom fit those from the comfort of your home",
+          child: CText(
+            text: model.description,
             textAlign: TextAlign.center,
             color: Colors.white,
             fontSize: 14,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: DotsIndicator(
-            dotsCount: 3,
-            decorator: DotsDecorator(
-              spacing: const EdgeInsets.symmetric(horizontal: 5),
-              color: HexColor("#999999"),
-              activeColor: HexColor("#A49966"),
-              size: const Size.square(10),
-              activeSize: const Size.square(10),
-            ),
-          ),
-        ),
+        const SizedBox(height: 40),
       ],
     );
   }
 
-  Widget get _imageView {
+  Widget imageView(OnBoardingModel model) {
     return Stack(
       alignment: Alignment.center,
       clipBehavior: Clip.none,
@@ -100,7 +131,7 @@ class OnboardingView extends GetView<OnboardingController> {
         Align(
           alignment: const Alignment(0, -0.2),
           child: Image.asset(
-            Assets.imagesOnBoarding1,
+            model.image,
             width: 280,
             height: 280,
           ),

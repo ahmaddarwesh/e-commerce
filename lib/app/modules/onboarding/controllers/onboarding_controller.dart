@@ -1,4 +1,5 @@
 import 'package:e_commerce/generated/assets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../data/on_bording_model.dart';
@@ -7,12 +8,23 @@ class OnboardingController extends GetxController {
   final List<OnBoardingModel> onBoardingList = [];
   RxInt currentItem = 0.obs;
 
+  late PageController pageController;
+
   onNext() {
-    currentItem(currentItem.value += 1);
+    int indexToMove = currentItem.value + 1;
+    if (indexToMove > 2) {
+      indexToMove = 0;
+    }
+    pageController.animateToPage(
+      indexToMove,
+      duration: 300.milliseconds,
+      curve: Curves.ease,
+    );
   }
 
   @override
   void onInit() {
+    pageController = PageController(initialPage: 0);
     fillOnBoardingData();
     super.onInit();
   }
