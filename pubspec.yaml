@@ -14,6 +14,7 @@ dependencies:
   logger: ^1.1.0
   get_storage: ^2.0.3
   fluttericon: 2.0.0
+  dots_indicator: ^2.1.0
   cool_alert:
     git:
       url: https://github.com/ahmaddarwesh/flutter_cool_alert.git
@@ -32,3 +33,4 @@ flutter:
   assets:
     - assets/anim/
     - assets/icons/
+    - assets/images/

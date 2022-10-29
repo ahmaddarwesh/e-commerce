@@ -1,4 +1,3 @@
-import 'package:e_commerce/app/core/local/sessions_config.dart';
 import 'package:e_commerce/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
@@ -26,12 +25,7 @@ class SplashController extends GetxController {
   void increment() => count.value++;
 
   void navigateRightRoute() async {
-    await 2.seconds.delay();
-    bool isAuth = Store.read<bool>(SKeys.isAuth, def: false);
-    if (!isAuth) {
-      Get.offAllNamed(Routes.REGISTER);
-    } else {
-      Get.offAllNamed(Routes.HOME);
-    }
+    await 3.seconds.delay();
+    Get.offAllNamed(Routes.ONBOARDING);
   }
 }

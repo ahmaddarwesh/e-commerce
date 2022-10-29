@@ -6,4 +6,9 @@ class Assets {
   static const String animError = 'assets/anim/error.json';
   static const String animSuccess = 'assets/anim/success.json';
   static const String iconsLogo = 'assets/icons/logo.png';
+  static const String imagesOnBoarding1 = 'assets/images/onBoarding1.png';
+  static const String imagesOnBoarding2 = 'assets/images/onBoarding2.png';
+  static const String imagesOnBoarding3 = 'assets/images/onBoarding3.png';
+  static const String imagesOnBoardingStand =
+      'assets/images/onBoardingStand.png';
 }

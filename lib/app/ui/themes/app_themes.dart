@@ -15,7 +15,7 @@ class AppThemes {
   }
 
   static TextStyle get textStyle {
-    return GoogleFonts.cairo(
+    return GoogleFonts.montserrat(
       color: Colors.black,
       fontSize: 14,
     );

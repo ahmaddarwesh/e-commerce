@@ -1,3 +1,4 @@
+import 'package:e_commerce/app/ui/themes/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,6 +32,7 @@ class CButton extends StatelessWidget {
   final EdgeInsets? padding;
   final Function()? onTap;
   final Color? color;
+  final Color? fontColor;
   final double? width;
   final double? height;
   final double? radius;
@@ -47,7 +49,8 @@ class CButton extends StatelessWidget {
     Key? key,
     this.text,
     this.onTap,
-    this.color,
+    this.color = Colors.white,
+    this.fontColor,
     this.padding,
     this.width,
     this.height,
@@ -71,7 +74,7 @@ class CButton extends StatelessWidget {
         margin: margin,
         height: height,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(radius ?? 13),
+          borderRadius: BorderRadius.circular(radius ?? 0),
           border: border,
           color: disable ? Colors.grey[300] : color,
         ),
@@ -94,7 +97,7 @@ class CButton extends StatelessWidget {
 
               switch (buttonState) {
                 case ButtonState.active:
-                  return widget(Colors.white);
+                  return widget(fontColor ?? AppColors.primaryColor);
                 case ButtonState.loading:
                   return const CupertinoActivityIndicator(color: Colors.white);
                 case ButtonState.disabled:
