@@ -2,6 +2,7 @@ import 'package:e_commerce/generated/assets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import '../../../routes/app_pages.dart';
 import '../data/on_bording_model.dart';
 
 class OnboardingController extends GetxController {
@@ -13,7 +14,7 @@ class OnboardingController extends GetxController {
   onNext() {
     int indexToMove = currentItem.value + 1;
     if (indexToMove > 2) {
-      indexToMove = 0;
+      Get.offAllNamed(Routes.HOME);
     }
     pageController.animateToPage(
       indexToMove,
