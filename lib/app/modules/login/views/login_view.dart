@@ -1,5 +1,6 @@
 import 'package:e_commerce/app/ui/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../../../../generated/assets.dart';
@@ -26,7 +27,7 @@ class LoginView extends GetView<LoginController> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
+                    SvgPicture.asset(
                       Assets.iconsLogo,
                       fit: BoxFit.fitWidth,
                       height: 120,

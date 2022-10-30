@@ -1,5 +1,6 @@
 import 'package:e_commerce/app/ui/themes/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../../../../generated/assets.dart';
@@ -15,7 +16,7 @@ class SplashView extends GetView<SplashController> {
       builder: (GetxController controller) {
         return Scaffold(
           backgroundColor: AppColors.primaryColor,
-          body: Center(child: Image.asset(Assets.iconsLogo)),
+          body: Center(child: SvgPicture.asset(Assets.iconsLogo)),
         );
       },
     );
