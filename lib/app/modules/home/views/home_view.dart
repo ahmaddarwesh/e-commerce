@@ -1,5 +1,5 @@
+import 'package:e_commerce/app/ui/widgets/custom_selectable_box.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
@@ -14,10 +14,7 @@ class HomeView extends GetView<HomeController> {
         centerTitle: true,
       ),
       body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+        child: CustomSelectableBox(label: 'label and data', isSelected: true),
       ),
     );
   }

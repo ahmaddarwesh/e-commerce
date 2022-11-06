@@ -33,7 +33,7 @@ class LandingView extends GetView<LandingController> {
               if (index == 1) return const WishListView();
               if (index == 2) return const CategoriesView();
               if (index == 3) return const AccountView();
-              return const SizedBox.square();
+              return const SizedBox.shrink();
             },
           ),
           bottomNavigationBar: BottomNavigationBar(

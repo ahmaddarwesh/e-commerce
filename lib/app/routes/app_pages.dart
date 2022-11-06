@@ -8,6 +8,8 @@ import '../modules/categories/bindings/categories_binding.dart';
 import '../modules/categories/views/categories_view.dart';
 import '../modules/checkout/bindings/checkout_binding.dart';
 import '../modules/checkout/views/checkout_view.dart';
+import '../modules/customize_product/bindings/customize_product_binding.dart';
+import '../modules/customize_product/views/customize_product_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/landing/bindings/landing_binding.dart';
@@ -106,6 +108,11 @@ class AppPages {
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.CUSTOMIZE_PRODUCT,
+      page: () => const CustomizeProductView(),
+      binding: CustomizeProductBinding(),
     ),
   ];
 }

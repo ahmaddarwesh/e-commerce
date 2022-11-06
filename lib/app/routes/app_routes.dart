@@ -20,6 +20,7 @@ abstract class Routes {
   static const ACCOUNT = _Paths.ACCOUNT;
   static const WISH_LIST = _Paths.WISH_LIST;
   static const HOME = _Paths.HOME;
+  static const CUSTOMIZE_PRODUCT = _Paths.CUSTOMIZE_PRODUCT;
 }
 
 abstract class _Paths {
@@ -39,4 +40,5 @@ abstract class _Paths {
   static const ACCOUNT = '/account';
   static const WISH_LIST = '/wish-list';
   static const HOME = '/home';
+  static const CUSTOMIZE_PRODUCT = '/customize-product';
 }
