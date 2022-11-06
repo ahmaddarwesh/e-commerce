@@ -16,7 +16,12 @@ class SplashView extends GetView<SplashController> {
       builder: (GetxController controller) {
         return Scaffold(
           backgroundColor: AppColors.primaryColor,
-          body: Center(child: SvgPicture.asset(Assets.iconsLogo)),
+          body: Center(
+            child: SvgPicture.asset(
+              Assets.iconsLogo,
+              color: Colors.white,
+            ),
+          ),
         );
       },
     );

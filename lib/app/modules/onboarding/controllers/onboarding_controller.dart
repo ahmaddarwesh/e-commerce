@@ -14,7 +14,7 @@ class OnboardingController extends GetxController {
   onNext() {
     int indexToMove = currentItem.value + 1;
     if (indexToMove > 2) {
-      Get.offAllNamed(Routes.HOME);
+      Get.offAllNamed(Routes.LANDING);
     }
     pageController.animateToPage(
       indexToMove,

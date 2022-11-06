@@ -46,7 +46,7 @@ class LoginController extends GetxController {
         Store.write(SKeys.token, outputModel.token);
         Store.write(SKeys.isAuth, true);
 
-        Get.offAllNamed(Routes.HOME);
+        Get.offAllNamed(Routes.LANDING);
       },
       onError: (e) {
         var message = DioHelper.errorHandler(e);
