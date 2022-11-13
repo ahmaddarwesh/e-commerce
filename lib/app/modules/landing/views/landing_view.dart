@@ -2,6 +2,7 @@ import 'package:e_commerce/app/modules/account/views/account_view.dart';
 import 'package:e_commerce/app/modules/categories/views/categories_view.dart';
 import 'package:e_commerce/app/modules/home/views/home_view.dart';
 import 'package:e_commerce/app/modules/wish_list/views/wish_list_view.dart';
+import 'package:e_commerce/app/routes/app_pages.dart';
 import 'package:e_commerce/app/ui/themes/app_colors.dart';
 import 'package:e_commerce/app/utilities/hex_color_helper.dart';
 import 'package:e_commerce/generated/assets.dart';
@@ -75,12 +76,17 @@ class LandingView extends GetView<LandingController> {
       toolbarHeight: 92,
       leadingWidth: 27 + 36,
       automaticallyImplyLeading: false,
-      leading: Padding(
-        padding: const EdgeInsets.only(left: 36),
-        child: SvgPicture.asset(
-          Assets.iconsMenu,
-          width: 27,
-          height: 18,
+      leading: InkWell(
+        onTap: () {
+          Get.toNamed(Routes.CUSTOMIZE_PRODUCT);
+        },
+        child: Padding(
+          padding: const EdgeInsets.only(left: 36),
+          child: SvgPicture.asset(
+            Assets.iconsMenu,
+            width: 27,
+            height: 18,
+          ),
         ),
       ),
       actions: [

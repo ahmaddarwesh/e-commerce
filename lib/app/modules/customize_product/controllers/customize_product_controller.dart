@@ -1,11 +1,12 @@
+import 'package:e_commerce/app/modules/customize_product/data/attributes_model.dart';
+import 'package:e_commerce/app/modules/customize_product/services/attributes_service.dart';
 import 'package:get/get.dart';
 
-class CustomizeProductController extends GetxController {
-  //TODO: Implement CustomizeProductController
-
-  final count = 0.obs;
+class CustomizeProductController extends GetxController
+    with StateMixin<AttributeResponseModel> {
   @override
   void onInit() {
+    getAttributes();
     super.onInit();
   }
 
@@ -19,5 +20,11 @@ class CustomizeProductController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
+  Future getAttributes() async {
+    RxStatus.loading();
+    await AttributesService.attributes(
+      onSuccess: (res) => change(res, status: RxStatus.success()),
+      onError: (error) => RxStatus.error(error.message),
+    );
+  }
 }

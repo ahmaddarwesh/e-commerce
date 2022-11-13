@@ -10,7 +10,7 @@ class Log {
   );
 
   static debug(data) {
-    logger.d(debug);
+    logger.d(data);
   }
 
   static verbose(data) {

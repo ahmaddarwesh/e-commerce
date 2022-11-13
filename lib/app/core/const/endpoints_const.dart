@@ -16,6 +16,7 @@ class _ApiEndStore {
   final products = _ApiEndProducts();
   final orders = _ApiEndOrders();
   final cart = _ApiEndCart();
+  final attributes = _ApiEndAttributes();
 }
 
 class _ApiEndProducts {
@@ -37,4 +38,11 @@ class _ApiEndCart {
   static const _cart = '/cart';
 
   final cart = "$_store$_cart";
+}
+
+class _ApiEndAttributes {
+  static const String _store = '/store';
+  static const _attributes = '/attributes';
+
+  final attributes = "$_store$_attributes";
 }
