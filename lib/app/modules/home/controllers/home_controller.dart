@@ -1,11 +1,20 @@
+import 'package:e_commerce/generated/assets.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
-  //TODO: Implement HomeController
+import '../data/ready_to_wear_model.dart';
 
-  final count = 0.obs;
+class HomeController extends GetxController {
+  List<ReadyToWearModel> readyToWear = [];
   @override
   void onInit() {
+    readyToWear
+        .add(ReadyToWearModel("Blake Night Abbey", Assets.imagesImg1, 1425.00));
+    readyToWear
+        .add(ReadyToWearModel("Blake Night Abbey", Assets.imagesImg2, 1425.00));
+    readyToWear
+        .add(ReadyToWearModel("Blake Night Abbey", Assets.imagesImg1, 1425.00));
+    readyToWear
+        .add(ReadyToWearModel("Blake Night Abbey", Assets.imagesImg2, 1425.00));
     super.onInit();
   }
 
@@ -18,6 +27,4 @@ class HomeController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

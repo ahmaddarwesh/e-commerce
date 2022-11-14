@@ -18,8 +18,8 @@ class SplashView extends GetView<SplashController> {
           backgroundColor: AppColors.primaryColor,
           body: Center(
             child: SvgPicture.asset(
-              Assets.iconsLogo,
-              color: Colors.white,
+              Assets.iconsLogoWhite,
+              // color: Colors.white,
             ),
           ),
         );

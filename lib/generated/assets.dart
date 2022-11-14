@@ -10,9 +10,13 @@ class Assets {
   static const String iconsFav = 'assets/icons/fav.svg';
   static const String iconsHome = 'assets/icons/home.svg';
   static const String iconsLogo = 'assets/icons/logo.svg';
+  static const String iconsLogoWhite = 'assets/icons/logo_white.svg';
   static const String iconsMarket = 'assets/icons/market.svg';
   static const String iconsMenu = 'assets/icons/menu.svg';
   static const String iconsNotification = 'assets/icons/notification.svg';
+  static const String imagesImg = 'assets/images/img.png';
+  static const String imagesImg1 = 'assets/images/img_1.png';
+  static const String imagesImg2 = 'assets/images/img_2.png';
   static const String imagesOnBoarding1 = 'assets/images/onBoarding1.png';
   static const String imagesOnBoarding2 = 'assets/images/onBoarding2.png';
   static const String imagesOnBoarding3 = 'assets/images/onBoarding3.png';

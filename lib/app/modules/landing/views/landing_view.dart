@@ -76,17 +76,12 @@ class LandingView extends GetView<LandingController> {
       toolbarHeight: 92,
       leadingWidth: 27 + 36,
       automaticallyImplyLeading: false,
-      leading: InkWell(
-        onTap: () {
-          Get.toNamed(Routes.CUSTOMIZE_PRODUCT);
-        },
-        child: Padding(
-          padding: const EdgeInsets.only(left: 36),
-          child: SvgPicture.asset(
-            Assets.iconsMenu,
-            width: 27,
-            height: 18,
-          ),
+      leading: Padding(
+        padding: const EdgeInsets.only(left: 36),
+        child: SvgPicture.asset(
+          Assets.iconsMenu,
+          width: 27,
+          height: 18,
         ),
       ),
       actions: [

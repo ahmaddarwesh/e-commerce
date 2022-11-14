@@ -65,11 +65,13 @@ class CustomizeProductView extends GetView<CustomizeProductController> {
             runSpacing: 6,
             alignment: WrapAlignment.start,
             children: options
-                .map((e) => CustomSelectableBox(
-                      label: e.name!,
-                      isSelected: selected == e.id,
-                      onTap: () => selected = e.id!,
-                    ))
+                .map(
+                  (e) => CustomSelectableBox(
+                    label: e.name!,
+                    isSelected: selected == e.id,
+                    onTap: () => selected = e.id!,
+                  ),
+                )
                 .toList(),
           ),
         ],
