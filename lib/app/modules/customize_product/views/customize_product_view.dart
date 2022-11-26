@@ -1,6 +1,9 @@
 import 'package:e_commerce/app/ui/widgets/custom_text.dart';
+import 'package:e_commerce/app/utilities/hex_color_helper.dart';
+import 'package:e_commerce/generated/assets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../../ui/widgets/custom_section_views.dart';
@@ -17,39 +20,77 @@ class CustomizeProductView extends GetView<CustomizeProductController> {
         title: const Text('CustomizeProductView'),
         centerTitle: true,
       ),
-      body: Center(
-        child: controller.obx(
-          (state) {
-            var attributes = state!.data!
-                .where((element) => element.attributeId == null)
-                .toList();
-            var options = state.data!
-                .where((element) => element.attributeId != null)
-                .toList();
+      body: Column(
+        children: [
+          Expanded(flex: 5, child: buildTop()),
+          Expanded(flex: 10, child: _buildAttr()),
+        ],
+      ),
+    );
+  }
 
-            return ListView.separated(
-              itemCount: attributes.length,
-              itemBuilder: (BuildContext context, int index) {
-                Data item = attributes[index];
-                List<Data> mOptions = options
-                    .where((element) => element.attributeId == item.id)
-                    .toList();
-
-                return DropDownView(
-                  item: item,
-                  data: mOptions,
-                  onSelect: () {},
-                );
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(height: 40);
-              },
-            );
-          },
-          onError: (e) => CText(text: e!),
-          onLoading: const CupertinoActivityIndicator(),
-          onEmpty: const CText(text: "No Data found"),
+  Widget buildTop() => Padding(
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+        child: Column(
+          children: [
+            Expanded(flex: 10, child: SvgPicture.asset(Assets.imagesThob)),
+            Expanded(
+              flex: 2,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const CText(text: "PRICE"),
+                  CText(
+                    text: "350 QR",
+                    color: HexColor("#420000"),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
+      );
+
+  Widget _buildAttr() {
+    return Center(
+      child: controller.obx(
+        (state) {
+          var attributes = state!.data!
+              .where((element) => element.attributeId == null)
+              .toList();
+          var options = state.data!
+              .where((element) => element.attributeId != null)
+              .toList();
+
+          return ListView.separated(
+            itemCount: attributes.length,
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            physics: const BouncingScrollPhysics(),
+            itemBuilder: (BuildContext context, int index) {
+              Data item = attributes[index];
+              List<Data> mOptions = options
+                  .where((element) => element.attributeId == item.id)
+                  .toList();
+
+              return DropDownView(
+                item: item,
+                data: mOptions,
+                onSelect: () {},
+              );
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return const Divider(
+                color: Colors.black,
+                endIndent: 4,
+                indent: 5,
+                thickness: 0.1,
+              );
+            },
+          );
+        },
+        onError: (e) => CText(text: e!),
+        onLoading: const CupertinoActivityIndicator(),
+        onEmpty: const CText(text: "No Data found"),
       ),
     );
   }

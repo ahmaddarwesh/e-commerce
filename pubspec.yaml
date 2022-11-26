@@ -16,9 +16,14 @@ dependencies:
   get_storage: ^2.0.3
   fluttericon: 2.0.0
   dots_indicator: ^2.1.0
+#  advance_expansion_tile: ^1.0.2
   cool_alert:
     git:
       url: https://github.com/ahmaddarwesh/flutter_cool_alert.git
+      ref: master
+  advance_expansion_tile:
+    git:
+      url: https://github.com/ahmaddarwesh/advance_expansion_tile.git
       ref: master
 
   flutter: 

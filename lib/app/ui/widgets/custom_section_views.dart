@@ -1,6 +1,6 @@
+import 'package:advance_expansion_tile/advance_expansion_tile.dart';
 import 'package:e_commerce/app/modules/customize_product/data/attributes_model.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'custom_selectable_box.dart';
 import 'custom_text.dart';
@@ -30,31 +30,61 @@ class DropDownView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: Get.width * .9,
-      child: Column(
-        children: [
-          CText(
-              text: "${item.name} (${item.displayType})",
-              fontSize: 16,
-              fontWeight: FontWeight.bold),
-          const SizedBox(height: 5),
-          Wrap(
-            spacing: 6,
-            runSpacing: 6,
-            alignment: WrapAlignment.start,
-            children: data
-                .map(
-                  (e) => CustomSelectableBox(
-                    label: e.name!,
-                    isSelected: isSelect,
-                    onTap: onSelect,
-                  ),
-                )
-                .toList(),
+    return AdvanceExpansionTile(
+      hideIcon: true,
+      dense: true,
+      title: CText(text: item.name!, fontSize: 16),
+      decoration: const BoxDecoration(),
+      tilePadding: const EdgeInsets.symmetric(horizontal: 20),
+      key: UniqueKey(),
+      children: [
+        SizedBox(
+          height: 60,
+          child: ListView.separated(
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            scrollDirection: Axis.horizontal,
+            itemCount: data.length,
+            itemBuilder: (context, index) {
+              var item = data[index];
+              return CustomSelectableBox(
+                label: item.name!,
+                isSelected: isSelect,
+                onTap: onSelect,
+              );
+            },
+            separatorBuilder: (context, i) {
+              return const SizedBox(width: 10);
+            },
           ),
-        ],
-      ),
+        ),
+      ],
+      // child: Column(
+      //   crossAxisAlignment: CrossAxisAlignment.start,
+      //   children: [
+      //     const SizedBox(height: 5),
+      //     SizedBox(
+      //       width: Get.width,
+      //       height: 60,
+      //       child: ListView.separated(
+      //         physics: const BouncingScrollPhysics(),
+      //         scrollDirection: Axis.horizontal,
+      //         itemCount: data.length,
+      //         itemBuilder: (context, index) {
+      //           var item = data[index];
+      //           return CustomSelectableBox(
+      //             label: item.name!,
+      //             isSelected: isSelect,
+      //             onTap: onSelect,
+      //           );
+      //         },
+      //         separatorBuilder: (context, i) {
+      //           return const SizedBox(width: 10);
+      //         },
+      //       ),
+      //     ),
+      //   ],
+      // ),
     );
   }
 }

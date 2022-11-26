@@ -22,4 +22,5 @@ class Assets {
   static const String imagesOnBoarding3 = 'assets/images/onBoarding3.png';
   static const String imagesOnBoardingStand =
       'assets/images/onBoardingStand.png';
+  static const String imagesThob = 'assets/images/thob.svg';
 }
