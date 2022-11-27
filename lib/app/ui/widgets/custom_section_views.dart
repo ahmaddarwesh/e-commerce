@@ -32,7 +32,7 @@ class DropDownView extends StatelessWidget {
   Widget build(BuildContext context) {
     return AdvanceExpansionTile(
       hideIcon: true,
-      dense: true,
+      // dense: true,
       title: CText(text: item.name!, fontSize: 16),
       decoration: const BoxDecoration(),
       tilePadding: const EdgeInsets.symmetric(horizontal: 20),

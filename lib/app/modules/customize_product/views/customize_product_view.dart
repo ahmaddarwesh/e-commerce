@@ -1,3 +1,4 @@
+import 'package:e_commerce/app/ui/widgets/custom_button.dart';
 import 'package:e_commerce/app/ui/widgets/custom_text.dart';
 import 'package:e_commerce/app/utilities/hex_color_helper.dart';
 import 'package:e_commerce/generated/assets.dart';
@@ -6,9 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
+import '../../../ui/themes/app_colors.dart';
 import '../../../ui/widgets/custom_section_views.dart';
 import '../controllers/customize_product_controller.dart';
 import '../data/attributes_model.dart';
+import 'measurement_view.dart';
 
 class CustomizeProductView extends GetView<CustomizeProductController> {
   const CustomizeProductView({Key? key}) : super(key: key);
@@ -25,6 +28,20 @@ class CustomizeProductView extends GetView<CustomizeProductController> {
           Expanded(flex: 5, child: buildTop()),
           Expanded(flex: 10, child: _buildAttr()),
         ],
+      ),
+      bottomSheet: SizedBox(
+        width: Get.width,
+        child: CButton(
+          text: "ADD MEASUREMENT",
+          color: AppColors.primaryColor,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          fontColor: Colors.white,
+          radius: 0,
+          onTap: () {
+            Get.to(const MeasurementView());
+          },
+        ),
       ),
     );
   }

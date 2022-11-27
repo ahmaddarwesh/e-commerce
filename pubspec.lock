@@ -4,11 +4,9 @@ packages:
   advance_expansion_tile:
     dependency: "direct main"
     description:
-      path: "."
-      ref: master
-      resolved-ref: b175d1ce61b2e35d5703306e6d68ea64686eefac
-      url: "https://github.com/ahmaddarwesh/advance_expansion_tile.git"
-    source: git
+      name: advance_expansion_tile
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "1.0.2"
   archive:
     dependency: transitive
@@ -89,6 +87,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  dropdown_textfield:
+    dependency: "direct main"
+    description:
+      name: dropdown_textfield
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.7"
+  equatable:
+    dependency: transitive
+    description:
+      name: equatable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.5"
   fake_async:
     dependency: transitive
     description:

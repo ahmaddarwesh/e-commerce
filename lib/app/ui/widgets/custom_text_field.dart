@@ -48,16 +48,19 @@ class CTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         showTopText ? CText(text: hint) : const SizedBox.shrink(),
+        const SizedBox(height: 10),
         Container(
           padding: padding,
-          height: height ?? 50,
+          height: height ?? 45,
           decoration: BoxDecoration(
-            color: Colors.grey[200]!,
-            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              width: 0.5,
+              color: Colors.grey[300]!,
+            ),
+            borderRadius: BorderRadius.circular(4),
           ),
           child: TextFormField(
             textDirection: TextDirection.ltr,
-            textAlign: TextAlign.center,
             textInputAction: textInputAction,
             controller: tController,
             style: AppThemes.textStyle,
@@ -69,16 +72,16 @@ class CTextField extends StatelessWidget {
             expands: expend,
             inputFormatters: inputFormatter,
             maxLines: maxLines,
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.zero,
-              focusedBorder: const OutlineInputBorder(
+            decoration: const InputDecoration(
+              contentPadding: EdgeInsets.symmetric(horizontal: 10),
+              focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(width: 0.01, color: Colors.transparent),
               ),
-              enabledBorder: const OutlineInputBorder(
+              enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(width: 0.01, color: Colors.transparent),
               ),
               hintTextDirection: TextDirection.ltr,
-              hintText: hint,
+              hintText: '',
             ),
           ),
         ),

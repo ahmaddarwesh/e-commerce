@@ -2,6 +2,7 @@ class AttributeResponseModel {
   bool? result;
   String? message;
   List<Data>? data;
+  List<FormFields>? formFields;
   CombinationsCategories? combinationsCategories;
   int? code;
 
@@ -9,6 +10,7 @@ class AttributeResponseModel {
       {this.result,
       this.message,
       this.data,
+      this.formFields,
       this.combinationsCategories,
       this.code});
 
@@ -19,6 +21,12 @@ class AttributeResponseModel {
       data = <Data>[];
       json['data'].forEach((v) {
         data!.add(Data.fromJson(v));
+      });
+    }
+    if (json['formFields'] != null) {
+      formFields = <FormFields>[];
+      json['formFields'].forEach((v) {
+        formFields!.add(FormFields.fromJson(v));
       });
     }
     combinationsCategories = json['combinations_categories'] != null
@@ -33,6 +41,9 @@ class AttributeResponseModel {
     data['message'] = message;
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
+    }
+    if (formFields != null) {
+      data['formFields'] = formFields!.map((v) => v.toJson()).toList();
     }
     if (combinationsCategories != null) {
       data['combinations_categories'] = combinationsCategories!.toJson();
@@ -99,6 +110,73 @@ class Data {
     data['updated_at'] = updatedAt;
     data['name'] = name;
     data['label'] = label;
+    return data;
+  }
+}
+
+class FormFields {
+  String? type;
+  String? field;
+  String? label;
+  String? width;
+  int? sortorder;
+  bool? isRequired;
+  List<Options>? options;
+
+  FormFields(
+      {this.type,
+      this.field,
+      this.label,
+      this.width,
+      this.sortorder,
+      this.isRequired,
+      this.options});
+
+  FormFields.fromJson(Map<String, dynamic> json) {
+    type = json['type'];
+    field = json['field'];
+    label = json['label'];
+    width = json['width'];
+    sortorder = json['sortorder'];
+    isRequired = json['isRequired'];
+    if (json['options'] != null) {
+      options = <Options>[];
+      json['options'].forEach((v) {
+        options!.add(Options.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['type'] = type;
+    data['field'] = field;
+    data['label'] = label;
+    data['width'] = width;
+    data['sortorder'] = sortorder;
+    data['isRequired'] = isRequired;
+    if (options != null) {
+      data['options'] = options!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Options {
+  int? id;
+  String? title;
+
+  Options({this.id, this.title});
+
+  Options.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    title = json['title'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['title'] = title;
     return data;
   }
 }
