@@ -19,6 +19,7 @@ class CustomizeProductView extends GetView<CustomizeProductController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: false,
       appBar: AppBar(
         title: const Text('CustomizeProductView'),
         centerTitle: true,
@@ -29,7 +30,7 @@ class CustomizeProductView extends GetView<CustomizeProductController> {
           Expanded(flex: 10, child: _buildAttr()),
         ],
       ),
-      bottomSheet: SizedBox(
+      bottomNavigationBar: SizedBox(
         width: Get.width,
         child: CButton(
           text: "ADD MEASUREMENT",

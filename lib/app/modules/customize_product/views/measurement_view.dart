@@ -19,6 +19,7 @@ class MeasurementView extends GetView<CustomizeProductController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: false,
       appBar: CAppBar(title: 'Measurement'),
       body: Column(
         children: [
@@ -33,7 +34,7 @@ class MeasurementView extends GetView<CustomizeProductController> {
           Expanded(child: buildForm()),
         ],
       ),
-      bottomSheet: SizedBox(
+      bottomNavigationBar: SizedBox(
         width: Get.width,
         child: CButton(
           text: "ADD MEASUREMENT",
